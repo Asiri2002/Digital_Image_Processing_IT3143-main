@@ -1,0 +1,13 @@
+A=imread('car.jpeg');
+se=[0 1 0; 1 1 1; 0 1 0];
+G=rgb2gray(A);
+I = imerode(G, se);
+boundary = G - I;
+IW=imdilate(I,se);
+figure,imshow(boundary, []);
+E=bwperim(G);
+figure,imshow(E);
+output=imopen(A,se);
+figure,imshow(A);
+figure,imshow(IW);
+figure,imshow(output);

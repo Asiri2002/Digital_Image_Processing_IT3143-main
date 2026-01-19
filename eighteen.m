@@ -1,0 +1,9 @@
+A=imread('circles.png');
+gray=rgb2gray(A);
+se=strel('disk',5);
+I=imerode(A,se);
+O=A-I;
+figure,imshow(A);
+figure,imshow(O);
+R=bwperim(gray);
+figure,imshow(R);

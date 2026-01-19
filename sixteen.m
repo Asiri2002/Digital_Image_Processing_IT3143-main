@@ -1,0 +1,10 @@
+A=imread('car.jpeg');
+%se=strel('disk',5);
+%se=strel('square',4);
+%se=[0 0 0;1 0 1];
+se=ones(6,2);
+I=imerode(A,se);
+%gray=rgb2gray(I);
+%O=imbinarize(gray);
+figure,imshow(A);
+figure,imshow(I);

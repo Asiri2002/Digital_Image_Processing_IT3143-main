@@ -1,0 +1,27 @@
+I=imread('peppers.png');
+red=I(:,:,1);
+green=I(:,:,2);
+blue=I(:,:,3);
+
+%red channel as a heatmap
+subplot(1,3,1),imshow(red);
+colormap("jet");
+colorbar;
+subplot(1,3,2),imshow(green);
+subplot(1,3,3),imshow(blue);
+
+figure(2);
+%senthesize a new image using the modifies channel
+Catt=cat(3,red,green,blue);
+subplot(3,3,1),imshow(Catt);
+
+%histogram equalization for only brightness in rgb img
+
+hsv=rgb2hsv(I);
+
+hsvbri=hsv(:,:,3);
+equalized=histeq(hsvbri/10)*10;
+hsv(:,:,3)=equalized;
+
+j=hsv2rgb(hsv);
+subplot(3,3,2),imshow(j);
